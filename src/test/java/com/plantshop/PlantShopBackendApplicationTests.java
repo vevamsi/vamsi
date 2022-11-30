@@ -23,7 +23,7 @@ import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
 class PlantShopBackendApplicationTests {
 	@Autowired 
 	PlantRepository pr;
-	
+
 	@Test
 	void testsavePlant() {
 		Plant p=new Plant();
@@ -42,14 +42,14 @@ class PlantShopBackendApplicationTests {
 		List<Plant> l=pr.findAll();
 		assertThat(l).size().isGreaterThan(0);
 	}
-	@Test
+	/*@Test
 	void testdeleteplants() {
 		Plant p= pr.findById(1).get();
 		    pr.delete(p);
 		    assertThat(pr.existsById(1)).isEqualTo(false);
 		    
 		   // assertThat(deletedProduct,is(null));
-	}
+	}*/
 	@Test
 	void testUpdatePlant() {
 		Plant p = pr.findById(2).get();
@@ -61,11 +61,11 @@ class PlantShopBackendApplicationTests {
 	     
 	    assertThat(updatedProduct.getPrice()).isEqualTo(999);
 	}
-	@Test
+	/*@Test
 	void testPlantById() {
 		    Plant p = pr.findById(9).get();    
 		    assertThat(p.getId()).isEqualTo(9);
-		}
+		}*/
 	@Test
 	void testPlantsByCategory() { 
 		    Plant p = (Plant) pr.findByCategoryId(1).get(1); 

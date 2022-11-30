@@ -20,7 +20,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	@Query(value="select count(userid) from Customer where userid=:p1",nativeQuery=true)
 	public int getData(@Param("p1") String emailid);
 
-	@Query(value="select * from customer where name ilike :p%",nativeQuery = true)	
-	public List<Customer> findByName(String search);
+	@Query(value="select * from customer where name like :p%",nativeQuery = true)	
+	public List<Customer> findByName(@Param("p")String search);
 	//List<customer> findByName(@Param("p") String search);
 }
