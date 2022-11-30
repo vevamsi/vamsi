@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nursery.dtos.LoginDTO;
 import com.nursery.dtos.Response;
-import com.nursery.exception.CustomerException;
 import com.nursery.models.Customer;
-import com.nursery.models.Plant;
-import com.nursery.repos.CustomerRepository;
 import com.nursery.services.CustomerService;
 
 @CrossOrigin
@@ -28,20 +25,14 @@ import com.nursery.services.CustomerService;
 public class CustomerController {
 	
 	@Autowired CustomerService customerService;
-	@Autowired private CustomerRepository dao;
-
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody Customer cust) {		
-		//if ((dao.findByUserid(cust.getUserid()).isPresent()))
-		//	throw new CustomerException("Customer Aleady exists");
 		customerService.registerCustomer(cust);
 		return Response.success(cust);
 	}
 	
 	@GetMapping
 	public List<Customer> findAllCustomers(String search) {
-		//List<Customer> result = customerService.allCustomers();
-		//return result;
 		List<Customer> result = null;
 		if(search==null || search.length()==0) {
 			result=customerService.allCustomers();
